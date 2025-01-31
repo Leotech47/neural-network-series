@@ -278,3 +278,43 @@ Esse tipo de animação pode ser usado para visualizar **como os parâmetros da 
 Se estiver aprendendo sobre regressão linear, experimente modificar os valores de `m` e `b` para ver como a reta muda!
 
 
+### Explicação do Código: Exibindo o Vídeo no Jupyter Notebook  
+
+#### **Código:**  
+```python
+from IPython.display import HTML
+
+HTML("""
+<div align="middle">
+<video width="80%" controls>
+      <source src="m.mp4" type="video/mp4">
+</video></div>""")
+```
+
+#### **Detalhamento:**  
+1. **Importação do `HTML` do IPython**  
+   ```python
+   from IPython.display import HTML
+   ```
+   - A função `HTML` permite inserir HTML diretamente em notebooks do Jupyter.
+
+2. **Criação da Estrutura HTML para o Vídeo**  
+   ```python
+   HTML("""
+   <div align="middle">
+   <video width="80%" controls>
+         <source src="m.mp4" type="video/mp4">
+   </video></div>""")
+   ```
+   - `<video width="80%" controls>`: Insere um player de vídeo ajustado para ocupar 80% da largura da tela e com controles (play, pause, etc.).
+   - `<source src="m.mp4" type="video/mp4">`: Especifica o arquivo de vídeo (`m.mp4`) a ser exibido.
+
+#### **Saída Esperada:**  
+- O vídeo **m.mp4** gerado anteriormente será exibido diretamente no Jupyter Notebook dentro do player de vídeo.
+
+---
+
+📌 **Dica para Iniciantes:**  
+Essa abordagem é útil para visualizar animações ou vídeos gerados dentro do próprio código, sem precisar abrir outro programa.
+
+
