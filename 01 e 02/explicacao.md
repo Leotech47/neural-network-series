@@ -318,3 +318,75 @@ HTML("""
 Essa abordagem é útil para visualizar animações ou vídeos gerados dentro do próprio código, sem precisar abrir outro programa.
 
 
+### Explicação do Código: Animação da Variação do Intercepto (**b**) na Regressão Linear  
+
+Este código é semelhante ao anterior, mas agora **anima a variação do intercepto (`b`)** ao invés da inclinação (`m`).  
+
+---
+
+### 🔹 Código Explicado:  
+
+#### **1️⃣ Configuração Inicial**  
+```python
+from matplotlib.animation import FuncAnimation
+
+fig, ax = plt.subplots()
+```
+- **Criação da figura e eixo** para plotar a animação.
+
+#### **2️⃣ Definição dos Eixos**  
+```python
+axis = plt.axes(xlim =(0, 2), ylim =(-0.1, 2))
+```
+- Define os **limites do eixo X e Y**.
+
+#### **3️⃣ Inicializando a Linha**  
+```python
+line, = axis.plot([], [], lw = 3)
+```
+- Cria uma **linha vazia** para ser animada.
+
+#### **4️⃣ Função `init()`**  
+```python
+def init():
+    line.set_data([], [])
+    return line,
+```
+- Inicializa a linha sem dados.
+
+#### **5️⃣ Função `animate(i)`**  
+```python
+def animate(i):
+    b_copy = i * 0.01
+    plt.title('b = ' + str(b_copy))
+    x = np.arange(0.0, 10.0, 0.1)
+    y = m * x + b_copy
+    line.set_data(x, y)  
+    return line,
+```
+- **Varia o intercepto (`b_copy`)** gradualmente ao longo da animação.
+- A reta é recalculada em cada quadro (`y = m * x + b_copy`).
+
+#### **6️⃣ Criando e Salvando a Animação**  
+```python
+ani = FuncAnimation(fig, animate, init_func = init,  
+                    frames = 200, interval = 20, blit = True)
+
+ani.save('b.mp4', writer = 'ffmpeg', fps = 30)
+```
+- Cria a **animação** e salva como `b.mp4`.
+
+---
+
+### 🎬 **Saída Esperada:**  
+O vídeo **b.mp4** mostrará a reta da regressão **subindo ou descendo** à medida que `b` muda.
+
+🔹 **Aplicação:**  
+Essa animação ilustra como a variação do **intercepto (`b`)** afeta a posição da reta, mantendo a inclinação (`m`) fixa.
+
+---
+
+📌 **Dica para Iniciantes:**  
+Testar diferentes valores de `m` e `b` ajuda a entender **como uma reta é definida na regressão linear**!  
+
+
