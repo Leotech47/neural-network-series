@@ -424,3 +424,60 @@ HTML("""
 Esse método é útil para visualizar animações ou vídeos gerados dentro do código de forma prática!  
 
 
+### 📈 **Regressão Linear para Determinar o Limiar de Idade**  
+
+Este trecho de código usa a equação da **regressão linear** para calcular um limiar de idade e exibir a reta ajustada sobre os pontos de dados.  
+
+---
+
+### 🔹 **Código Explicado**  
+
+#### **1️⃣ Cálculo do Limiar de Idade**  
+```python
+# 0.5 = m.x + b
+# 0.5 - b = m.x
+# (0.5 - b) / m = x
+limiar_idade = (0.5 - b) / m
+print(limiar_idade)
+```
+✅ **O que acontece aqui?**  
+- O código rearranja a equação da reta `y = m*x + b` para encontrar **o valor de `x` quando `y = 0.5`**.  
+- Isso permite determinar **a idade onde a classificação muda de 0 para 1**.  
+- `print(limiar_idade)`: Exibe o valor calculado.  
+
+#### **2️⃣ Plotando a Reta da Regressão**  
+```python
+plt.plot(ages, ages * m + b, color='blue')
+```
+- **Plota a reta ajustada** pela regressão linear em azul.  
+
+#### **3️⃣ Adicionando a Linha de Limiar**  
+```python
+plt.plot([limiar_idade, limiar_idade], [0, 0.5], '--', color='green')
+```
+- **Adiciona uma linha pontilhada verde** na idade limite (`limiar_idade`).  
+
+#### **4️⃣ Plotando os Pontos de Dados**  
+```python
+plt.scatter(ages, labels, color="red")
+```
+- **Plota os pontos de idade e seus rótulos (`labels`) em vermelho**.  
+
+#### **5️⃣ Exibindo o Gráfico**  
+```python
+plt.show()
+```
+- **Exibe o gráfico final** com a reta de regressão e os pontos.  
+
+---
+
+### 🎯 **Saída Esperada**  
+- O valor de `limiar_idade` será impresso no console.  
+- Um gráfico será exibido, contendo:  
+  - **Reta de regressão (azul)**.  
+  - **Linha pontilhada verde**, representando a idade-limite.  
+  - **Pontos vermelhos**, indicando os dados originais.  
+
+🔹 **Aplicação**: Esse método pode ser usado para **classificação baseada em idade** em Machine Learning.  
+
+
