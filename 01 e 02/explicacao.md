@@ -129,3 +129,36 @@ Exemplo de visualização:
 
 📊 **Dica para iniciantes**: Gráficos de dispersão são ótimos para visualizar a relação entre duas variáveis. O uso de `matplotlib` para visualizações ajuda a entender melhor os dados e facilita a análise.
 
+
+### Explicação do Código: Predição Usando Regressão Linear
+
+#### Código:
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(ages.reshape(-1, 1), labels)
+```
+
+#### Detalhamento:
+
+1. **Importação de Bibliotecas**:
+   - `from sklearn.linear_model import LinearRegression`: Importa a classe `LinearRegression` da biblioteca `sklearn`, que é usada para implementar o modelo de regressão linear.
+   
+2. **Criação do Modelo**:
+   - `model = LinearRegression()`: Cria um objeto chamado `model` que será responsável pela regressão linear.
+
+3. **Ajuste do Modelo**:
+   - `model.fit(ages.reshape(-1, 1), labels)`: O método `fit()` treina o modelo de regressão linear. Aqui, `ages.reshape(-1, 1)` transforma o vetor `ages` para que tenha a forma necessária para o modelo, e `labels` são os valores de saída (rótulos). A regressão linear tenta encontrar a linha que melhor se ajusta aos dados.
+
+#### Saída Esperada:
+
+O código não gera saída direta visível, mas ele treina um modelo de regressão linear. Após a execução, o modelo pode ser utilizado para fazer previsões com base nas idades fornecidas.
+
+---
+
+📈 **Dica para iniciantes**: A regressão linear é uma técnica fundamental para prever valores contínuos. Com a biblioteca `sklearn`, podemos facilmente treinar modelos para aprender padrões em dados e fazer previsões.
+
+
