@@ -390,3 +390,37 @@ Essa animação ilustra como a variação do **intercepto (`b`)** afeta a posiç
 Testar diferentes valores de `m` e `b` ajuda a entender **como uma reta é definida na regressão linear**!  
 
 
+### 📽️ **Exibindo o Vídeo `b.mp4` no Jupyter Notebook**  
+
+Este código exibe o vídeo gerado (`b.mp4`) diretamente no **Jupyter Notebook**, facilitando a visualização da animação sem precisar abrir outro programa.  
+
+---
+
+### 🔹 **Código Explicado:**  
+```python
+from IPython.display import HTML
+
+HTML("""
+<div align="middle">
+<video width="80%" controls>
+      <source src="b.mp4" type="video/mp4">
+</video></div>""")
+```
+✅ **O que acontece aqui?**  
+1. `from IPython.display import HTML`:  
+   - Importa a função `HTML`, permitindo a inserção de código HTML no notebook.  
+
+2. `HTML(""" <video> </video> """)`:  
+   - Cria um player de vídeo na célula do Jupyter Notebook.  
+   - `<video width="80%" controls>`: Ajusta o tamanho e adiciona controles (play, pause, volume).  
+   - `<source src="b.mp4" type="video/mp4">`: Define `b.mp4` como o arquivo a ser exibido.  
+
+---
+
+### 🎬 **Saída Esperada:**  
+🔹 **O vídeo `b.mp4` será reproduzido diretamente no Jupyter Notebook.**  
+
+📌 **Dica para Iniciantes:**  
+Esse método é útil para visualizar animações ou vídeos gerados dentro do código de forma prática!  
+
+
