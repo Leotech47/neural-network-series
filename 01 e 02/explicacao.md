@@ -162,3 +162,33 @@ O código não gera saída direta visível, mas ele treina um modelo de regress�
 📈 **Dica para iniciantes**: A regressão linear é uma técnica fundamental para prever valores contínuos. Com a biblioteca `sklearn`, podemos facilmente treinar modelos para aprender padrões em dados e fazer previsões.
 
 
+### Explicação do Código: Obtendo Coeficiente e Intercepto da Regressão Linear
+
+#### Código:
+
+```python
+m = model.coef_[0]
+b = model.intercept_
+```
+
+#### Detalhamento:
+
+1. **Obtendo o Coeficiente (m)**:
+   - `m = model.coef_[0]`: A variável `m` representa o **coeficiente angular** da linha de regressão (também chamado de "pendente"). Ele indica a taxa de variação da variável dependente (no caso, `labels`) em relação à variável independente (no caso, `ages`). O índice `[0]` é utilizado para acessar o valor de `m`, pois a regressão linear possui um único coeficiente para uma variável de entrada.
+
+2. **Obtendo o Intercepto (b)**:
+   - `b = model.intercept_`: A variável `b` representa o **intercepto** da linha de regressão. Esse é o valor onde a linha cruza o eixo Y, ou seja, quando a variável independente (`ages`) é igual a zero.
+
+#### Saída Esperada:
+
+As variáveis `m` e `b` serão valores numéricos, que representam a equação da reta de regressão linear da forma:  
+**y = m * x + b**, onde:
+- `m` é o coeficiente angular (a inclinação da linha),
+- `b` é o intercepto (o valor de `y` quando `x = 0`).
+
+Esses valores são calculados automaticamente pelo modelo após o treinamento.
+
+---
+
+📊 **Dica para iniciantes**: A equação da reta de regressão (`y = m.x + b`) é crucial para prever novos valores. Com isso, podemos usar o modelo treinado para estimar rótulos para novas entradas de dados!
+
