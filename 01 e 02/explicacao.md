@@ -481,3 +481,136 @@ plt.show()
 🔹 **Aplicação**: Esse método pode ser usado para **classificação baseada em idade** em Machine Learning.  
 
 
+### 📈 **Função Logística (Sigmoide) na Regressão Logística**  
+
+A **função sigmoide** é amplamente utilizada em **classificação binária**, pois transforma valores reais em uma faixa entre **0 e 1**, representando probabilidades.  
+
+---
+
+### 🔹 **Código Explicado**  
+
+#### **1️⃣ Importação do Módulo `math`**  
+```python
+import math
+```
+- O módulo `math` contém a função `exp()`, que calcula o **expoente de `e`**.
+
+#### **2️⃣ Definição da Função `sigmoid(x)`**  
+```python
+def sigmoid(x):
+    a = []
+    for item in x:
+        a.append(1 / (1 + math.exp(-item)))
+    return a
+```
+✅ **O que acontece aqui?**  
+- A função recebe uma lista de valores `x` e aplica a fórmula da **sigmoide**:  
+  \[
+  S(x) = \frac{1}{1 + e^{-x}}
+  \]
+- Cada valor da lista é transformado e armazenado na lista `a`.
+
+#### **3️⃣ Criando os Valores de Entrada `x`**  
+```python
+x = np.arange(-10., 10., 0.2)
+```
+- Gera uma sequência de valores entre **-10 e 10**, com passos de **0.2**.
+
+#### **4️⃣ Aplicando a Função Sigmoide**  
+```python
+sig = sigmoid(x)
+```
+- Converte os valores `x` usando a **função sigmoide**.
+
+#### **5️⃣ Plotando a Curva Sigmoide**  
+```python
+plt.plot(x, sig)
+plt.show()
+```
+- **Plota a curva da função sigmoide**, mostrando a transição suave entre **0 e 1**.
+
+---
+
+### 🎯 **Saída Esperada**  
+📌 Um **gráfico da função sigmoide** será exibido.  
+- Para valores negativos, a saída está **próxima de 0**.  
+- Para valores positivos, a saída está **próxima de 1**.  
+- No ponto **x = 0**, o valor é **0.5**.  
+
+---
+
+### 🔥 **Aplicação em Machine Learning**  
+A sigmoide é usada na **Regressão Logística**, convertendo predições em probabilidades para classificação binária.  
+
+
+### 🧠 **Classificador Sigmóide com Regressão Logística**  
+
+Este código implementa um **classificador sigmoide** utilizando **Regressão Logística**, ajustando um modelo para prever probabilidades com base na idade.  
+
+---
+
+### 🔹 **Explicação do Código**  
+
+#### **1️⃣ Importando a Regressão Logística**  
+```python
+from sklearn.linear_model import LogisticRegression
+```
+- Importa `LogisticRegression` da biblioteca `sklearn` para criar o modelo de classificação.  
+
+#### **2️⃣ Criando e Treinando o Modelo**  
+```python
+model = LogisticRegression()
+model.fit(ages.reshape(-1, 1), labels)
+```
+- `model.fit(ages.reshape(-1, 1), labels)`: Ajusta o modelo com os dados de **idade (`ages`)** e **rótulos (`labels`)**.  
+- `.reshape(-1,1)`: Garante que os dados estejam no formato correto para o modelo (coluna única).  
+
+#### **3️⃣ Obtendo os Coeficientes da Regressão**  
+```python
+m = model.coef_[0][0]  
+b = model.intercept_[0]
+```
+- `m`: Coeficiente angular da reta (inclinação).  
+- `b`: Interceptação no eixo Y.  
+
+#### **4️⃣ Gerando Valores para Plotagem**  
+```python
+x = np.arange(0, 70, 0.1)
+sig = sigmoid(m*x + b)
+```
+- Cria um **intervalo de idades (`x`)** para prever a função sigmoide.  
+- `sigmoid(m*x + b)`: Aplica a função sigmoide para calcular probabilidades.  
+
+#### **5️⃣ Calculando o Limiar de Decisão**  
+```python
+limiar_idade = 0 - (b / m)
+print(limiar_idade)
+```
+- **Determina a idade onde a classificação muda de 0 para 1**.  
+
+#### **6️⃣ Plotando o Gráfico**  
+```python
+plt.scatter(ages, labels, color="red")
+plt.plot([limiar_idade, limiar_idade], [0, 0.5], '--', color='green')
+plt.plot(x, sig)
+plt.show()
+```
+- **Pontos vermelhos**: Idades e seus rótulos (0 ou 1).  
+- **Linha pontilhada verde**: Limiar da decisão.  
+- **Curva azul**: Função sigmoide ajustada pelo modelo.  
+
+---
+
+### 🎯 **Saída Esperada**  
+📌 **O valor de `limiar_idade` será impresso**, indicando a idade-limite da classificação.  
+📌 **O gráfico exibirá** os dados, a reta da sigmoide e o ponto crítico de decisão.  
+
+---
+
+### 🔥 **Aplicação na Vida Real**  
+Este modelo pode ser usado para prever probabilidades em problemas como:  
+✅ **Aprovação de crédito por idade**  
+✅ **Diagnóstico médico baseado em características**  
+✅ **Previsão de risco em seguros**  
+
+#Python #MachineLearning #RegressãoLogística #Classificação #DataScience
