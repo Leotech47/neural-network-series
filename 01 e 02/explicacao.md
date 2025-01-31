@@ -192,3 +192,89 @@ Esses valores são calculados automaticamente pelo modelo após o treinamento.
 
 📊 **Dica para iniciantes**: A equação da reta de regressão (`y = m.x + b`) é crucial para prever novos valores. Com isso, podemos usar o modelo treinado para estimar rótulos para novas entradas de dados!
 
+### Explicação do Código: Animação da Regressão Linear
+
+Este código usa **Matplotlib** para criar uma animação que mostra a mudança do coeficiente angular (**m**) ao longo do tempo, simulando a evolução da linha de regressão.
+
+---
+
+### 🔹 Código Explicado:
+
+#### **1️⃣ Configuração Inicial da Animação**
+```python
+from matplotlib.animation import FuncAnimation
+fig, ax = plt.subplots()
+```
+- `FuncAnimation`: Permite criar animações dinâmicas no Matplotlib.
+- `fig, ax = plt.subplots()`: Cria uma figura (`fig`) e um eixo (`ax`) para plotar a animação.
+
+#### **2️⃣ Definição dos Eixos**
+```python
+axis = plt.axes(xlim =(0, 2), ylim =(-0.1, 2))
+```
+- Define os **limites do eixo X e Y**.
+- `xlim = (0, 2)`: O eixo X vai de 0 a 2.
+- `ylim = (-0.1, 2)`: O eixo Y vai de -0.1 a 2.
+
+#### **3️⃣ Inicializando a Linha**
+```python
+line, = axis.plot([], [], lw = 3)
+```
+- Cria uma linha vazia (`line`), que será atualizada na animação.
+- `lw = 3`: Define a espessura da linha.
+
+#### **4️⃣ Função `init()`**
+```python
+def init():
+    line.set_data([], [])
+    return line,
+```
+- Inicializa a animação com uma linha vazia.
+
+#### **5️⃣ Função `animate(i)`**
+```python
+def animate(i):
+    m_copy = i * 0.01
+    plt.title('m = ' + str(m_copy))
+    x = np.arange(0.0, 10.0, 0.1)
+    y = m_copy * x + b
+    line.set_data(x, y)  
+    return line,
+```
+- **Anima a linha de regressão**: `m` começa pequeno e cresce a cada frame (`i * 0.01`).
+- **Eixo X (`x`)**: Gera valores de 0 a 10 com intervalo de 0.1.
+- **Eixo Y (`y`)**: Calcula os valores usando a equação da reta `y = m*x + b`.
+- `plt.title('m = ' + str(m_copy))`: Atualiza o título para mostrar o valor de `m`.
+
+#### **6️⃣ Criando a Animação**
+```python
+ani = FuncAnimation(fig, animate, init_func = init,  
+                    frames = 200,  
+                    interval = 20,  
+                    blit = True)
+```
+- **`frames=200`**: A animação terá 200 quadros.
+- **`interval=20`**: Define um intervalo de 20 milissegundos entre cada quadro.
+- **`blit=True`**: Otimiza a performance da animação.
+
+#### **7️⃣ Salvando a Animação**
+```python
+ani.save('m.mp4', writer='ffmpeg', fps=30)
+```
+- Salva a animação como um vídeo (`m.mp4`) usando o `ffmpeg`.
+- `fps=30`: Define 30 frames por segundo.
+
+---
+
+### 🎬 **Saída Esperada**:
+O código cria um **vídeo (`m.mp4`)** mostrando a reta da regressão linear mudando de inclinação ao longo do tempo, conforme `m` aumenta.
+
+🔹 **Aplicação**:
+Esse tipo de animação pode ser usado para visualizar **como os parâmetros da regressão linear evoluem** em treinamentos de Machine Learning.
+
+---
+
+📊 **Dica para Iniciantes**:
+Se estiver aprendendo sobre regressão linear, experimente modificar os valores de `m` e `b` para ver como a reta muda!
+
+
